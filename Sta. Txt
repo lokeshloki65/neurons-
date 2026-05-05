@@ -1,3 +1,27 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+
+driver = webdriver.Chrome()
+
+start = __import__('time').time()
+driver.get("https://www.example-ecommerce.com/product-catalog")
+
+WebDriverWait(driver, 10).until(
+    lambda d: d.find_element(By.CLASS_NAME, "product-list")
+)
+
+end = __import__('time').time()
+
+print("Page Load Time:", (end - start) * 1000, "ms")
+
+driver.quit()
+
+
+.............
+
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

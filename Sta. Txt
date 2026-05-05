@@ -1,0 +1,28 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+
+public class PageLoadTimeTest {
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        long startTime = System.currentTimeMillis();
+
+        // Navigate to the page
+        driver.get("https://www.example-ecommerce.com/product-catalog");
+
+        // Wait for page to load (product list visible)
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> d.findElement(By.className("product-list")).isDisplayed());
+
+        long endTime = System.currentTimeMillis();
+
+        long pageLoadTime = endTime - startTime;
+        System.out.println("Page Load Time: " + pageLoadTime + " ms");
+
+        driver.quit();
+    }
+}

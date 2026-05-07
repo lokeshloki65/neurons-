@@ -1,0 +1,35 @@
+Procedure
+
+1. Open FileZilla, CyberDuck, or WinSCP software on the system.
+
+2. Enter the connection details:
+
+• Host Name / Server IP – Linux VM IP Address
+
+• Username – Linux VM Username
+
+• Password – Linux VM Password
+
+• Port Number – 22
+
+3. Select SFTP (SSH File Transfer Protocol) as the connection type.
+
+4. Click the connect option:
+
+• Quickconnect in FileZilla
+
+• Connect in CyberDuck
+
+• Login in WinSCP
+
+5. After successful connection:
+
+• Left panel displays local system files
+
+• Right panel displays Linux VM files
+
+6. Use drag and drop to upload or download files between the local system and Linux VM.
+
+7. Verify whether the transferred files are available in the destination folder.
+
+8. Close the connection safely after completing the file transfer process.

@@ -1,35 +1,89 @@
-Procedure
+ALGORITHM:
 
-1. Open FileZilla, CyberDuck, or WinSCP software on the system.
+1. Import required libraries
 
-2. Enter the connection details:
+2. Load Iris dataset
 
-• Host Name / Server IP – Linux VM IP Address
+3. Split training and testing data
 
-• Username – Linux VM Username
+4. Train perceptron without bias
 
-• Password – Linux VM Password
+5. Train perceptron with bias
 
-• Port Number – 22
+6. Compare accuracy
 
-3. Select SFTP (SSH File Transfer Protocol) as the connection type.
+PROGRAM:
 
-4. Click the connect option:
+from sklearn.datasets import load_iris
 
-• Quickconnect in FileZilla
+from sklearn.model_selection import train_test_split
 
-• Connect in CyberDuck
+from sklearn.linear_model import Perceptron
 
-• Login in WinSCP
+from sklearn.metrics import accuracy_score
 
-5. After successful connection:
+data = load_iris()
 
-• Left panel displays local system files
+X = data.data
 
-• Right panel displays Linux VM files
+y = data.target
 
-6. Use drag and drop to upload or download files between the local system and Linux VM.
+X_train, X_test, y_train, y_test = train_test_split(
 
-7. Verify whether the transferred files are available in the destination folder.
+ X, y, test_size=0.2, random_state=0)
 
-8. Close the connection safely after completing the file transfer process.
+model1 = Perceptron(fit_intercept=False)
+
+model1.fit(X_train, y_train)
+
+pred1 = model1.predict(X_test)
+
+model2 = Perceptron(fit_intercept=True)
+
+model2.fit(X_train, y_train)
+
+pred2 = model2.predict(X_test)
+
+print("Accuracy without bias:", accuracy_score(y_test, pred1))
+
+print("Accuracy with bias:", accuracy_score(y_test, pred2))
+
+OUTPUT:
+
+Accuracy without bias: 0.93
+
+Accuracy with bias: 1.0
+
+RESULT: Thus the perceptron classification with and without bias was executed successfully.
+
+
+
+
+.....
+
+
+Bias and Fairness – 
+
+AI sometimes gives unfair decisions because of biased data.
+
+Transparency and Accountability –
+
+AI decisions are difficult to understand and explain.
+
+Privacy and Data Protection –
+
+AI may misuse personal user data.
+
+Manipulation and Exploitation – 
+
+AI can influence human behavior through recommendations and ads.
+
+Unintended Consequences – 
+
+AI may create unexpected problems or risks.
+
+Algorithmic Decision Making –
+
+AI systems make important decisions that can affect people’s lives.
+
+
